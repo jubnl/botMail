@@ -6,5 +6,5 @@ First of all, thank you [Thomas Wieland](https://github.com/thomaswieland) for y
 2. Rename [.env.sample](.env.sample) to `.env`
 3. Complete your .env file
 4. In your command prompt, run `pip install -r requirements.txt`
-5. In the same dir as [main.py](main.py), create a `attachments` directory
+5. In the same dir as [main.py](main.py), create an `attachments` directory
 6. Then you can run [mail.py](main.py)
