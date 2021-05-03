@@ -8,3 +8,5 @@ First of all, thank you [Thomas Wieland](https://github.com/thomaswieland) for y
 4. In your command prompt, run `pip install -r requirements.txt`
 5. In the same dir as [main.py](main.py), create an `attachments` directory
 6. Then you can run [mail.py](main.py)
+
+https://thispointer.com/python-how-to-create-a-zip-archive-from-multiple-files-or-directory/
