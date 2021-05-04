@@ -4,11 +4,17 @@ from pathlib import Path
 from sender import sender
 from os import remove
 
-
+# set constant
 ATT_FOLDER = "./attachments/"
 
 def extractor(email: MailMessage=None):
-    # extract email
+    """
+    :param email: MailMessage object
+    
+    extract infos from the mail object
+    """
+    
+    # extract email infos
     expeditor = email.from_values['full'] if email.from_values else f"<{email.from_}>"
     subject = email.subject if email.subject else None
     content = email.text if email.text != "\r\n" else None
@@ -33,8 +39,10 @@ def extractor(email: MailMessage=None):
             for f in files:
                 zip.write(f, str(f).replace("attachments/",""))
 
+    # send the mail on discord via the sender
     sender(expeditor=expeditor, subject=subject, content=content, attachments=sender_att)
     
+    # empty attachments dir
     if attachments:
         files = [x for x in Path(ATT_FOLDER).iterdir()]
         for f in files:

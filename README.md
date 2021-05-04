@@ -12,3 +12,9 @@ First of all, thank you [Thomas Wieland](https://github.com/thomaswieland) for y
 6. In your command prompt, run `sudo apt install python3-imaplib2`
 7. In the same dir as [main.py](main.py), create an `attachments` directory
 8. Then you can run [mail.py](main.py)
+
+You can simply use [pm2](https://pm2.keymetrics.io/) (`pm2 start main.py --interpreter python3 --name mailBot`).
+
+To install [pm2](https://pm2.keymetrics.io/) you can use [npm](https://www.npmjs.com/) : `npm install pm2 -g`
+
+To install [npm](https://www.npmjs.com/) use this command : `sudo apt install nodejs npm`

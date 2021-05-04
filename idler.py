@@ -4,10 +4,11 @@ from email import *
 from environs import Env
 from extractor import extractor
 
-
+# extract env vars
 env = Env()
 env.read_env()
 
+# define constants
 IMAP_SERVER = env("IMAP_SERVER")
 EMAIL = env("EMAIL")
 PASSWORD = env("PASSWORD")
@@ -63,7 +64,6 @@ class Idler(object):
                 self.dosync()
 
     # The method that gets called when a new email arrives. 
-    # Replace it with something better.
     def dosync(self):
         print("Email incoming")
         with MailBox(IMAP_SERVER).login(EMAIL, PASSWORD, "INBOX") as mailbox:
