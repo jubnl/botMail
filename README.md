@@ -11,7 +11,7 @@ First of all, thank you [Thomas Wieland](https://github.com/thomaswieland) for y
 5. In your command prompt, run `pip3 install -r requirements.txt`
 6. In your command prompt, run `sudo apt install python3-imaplib2`
 7. In the same dir as [main.py](main.py), create an `attachments` directory
-8. Then you can run [mail.py](main.py)
+8. Then you can run [main.py](main.py)
 
 You can simply use [pm2](https://pm2.keymetrics.io/) (`pm2 start main.py --interpreter python3 --name mailBot`).
 
