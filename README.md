@@ -7,7 +7,8 @@ First of all, thank you [Thomas Wieland](https://github.com/thomaswieland) for y
 1. Clone this repo
 2. Rename [.env.sample](.env.sample) to `.env`
 3. Complete your .env file
-4. In your command prompt, run `pip3 install -r requirements.txt`
-5. In your command prompt, run `sudo apt install python3-imaplib2`
-6. In the same dir as [main.py](main.py), create an `attachments` directory
-7. Then you can run [mail.py](main.py)
+4. Put the email folder in your website (require PHP on your web server) according to your redirect URI inside the .env file
+5. In your command prompt, run `pip3 install -r requirements.txt`
+6. In your command prompt, run `sudo apt install python3-imaplib2`
+7. In the same dir as [main.py](main.py), create an `attachments` directory
+8. Then you can run [mail.py](main.py)
