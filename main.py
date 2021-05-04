@@ -25,6 +25,7 @@ if __name__ == '__main__':
         idler.start()
 
         while True:
+            print("Bot online")
             sleep(1739) # IMAP4_SSL.Idle_timout - 1s
             raise Exception
 

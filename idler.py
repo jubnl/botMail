@@ -1,9 +1,8 @@
 from threading import *
 from imap_tools import MailBox
-from pprint import pprint
 from email import *
 from environs import Env
-from discord_webhook import send_discord
+from extractor import extractor
 
 
 env = Env()
@@ -69,5 +68,5 @@ class Idler(object):
         print("Email incoming")
         with MailBox(IMAP_SERVER).login(EMAIL, PASSWORD, "INBOX") as mailbox:
             email = mailbox.fetch(limit=1, reverse=True)
-            send_discord(next(email))
+            extractor(next(email))
         
