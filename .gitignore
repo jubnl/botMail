@@ -12,3 +12,6 @@ venv/
 
 # intelliJ files
 .idea/*
+
+# empty attachments dir
+attachments/*

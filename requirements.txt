@@ -1,3 +1,5 @@
 imap-tools==0.40.0
 environs==9.3.2
 discord-webhook==0.13.0
+imaplib2==2.45.0
+

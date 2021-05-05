@@ -1,7 +1,10 @@
 from imaplib2 import IMAP4_SSL
 from time import sleep
 from datetime import datetime
+from pathlib import Path
+from os import remove
 from sys import exit
+# from pprint import pprint
 from idler import (
     IMAP_SERVER,
     PASSWORD,
@@ -12,6 +15,12 @@ from idler import (
 if __name__ == '__main__':
 
     try:
+        files = [x for x in Path("./attachments/").iterdir()]
+        # pprint(files)
+        if files:
+            for f in files:
+                remove(f)
+        
         # Create IMAP_SSL instance
         M = IMAP4_SSL(IMAP_SERVER)
         M.login(EMAIL, PASSWORD)

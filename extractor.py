@@ -3,6 +3,7 @@ from zipfile import ZipFile
 from pathlib import Path
 from sender import sender
 from os import remove
+# from pprint import pprint
 
 # set constant
 ATT_FOLDER = "./attachments/"
@@ -40,6 +41,7 @@ def extractor(email: MailMessage=None):
                 zip.write(f, str(f).replace("attachments/",""))
 
     # send the mail on discord via the sender
+    # pprint((expeditor, subject, content, sender_att))
     sender(expeditor=expeditor, subject=subject, content=content, attachments=sender_att)
     
     # empty attachments dir

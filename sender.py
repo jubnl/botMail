@@ -1,11 +1,13 @@
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from re import compile
 from textwrap import wrap
+# from pprint import pprint
 
 # set env vars
 from environs import Env
 env = Env()
 env.read_env()
+
 
 # Define constants
 MAX_LENGTH_DESCRIPTION =  2048
@@ -36,8 +38,9 @@ def sender(expeditor: str,
 
     # get length of every field
     lexpeditor = len(expeditor)
-    lsubject = len(subject)
-    lcontent = len(content)
+    lsubject = len(subject) if subject else 0
+    lcontent = len(content) if content else 0
+    
 
     # extract email from expeditor string
     regex = compile(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+")
@@ -66,6 +69,7 @@ def sender(expeditor: str,
 
         # send embeds
         for n, i in enumerate(contents):
+            # pprint((subject, content, expeditor, email))
             embed = DiscordEmbed(title=f"{subject} {n+1}/{len(contents)}", description=i, color='03b2f8')
             embed.set_author(name=expeditor, url=email)
             embed.set_timestamp()
@@ -74,6 +78,7 @@ def sender(expeditor: str,
 
     # send embed
     else:
+        # pprint((subject, content, expeditor, email))
         embed = DiscordEmbed(title=subject, description=content, color='03b2f8')
         embed.set_author(name=expeditor, url=email)
         embed.set_timestamp()
