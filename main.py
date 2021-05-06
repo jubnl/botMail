@@ -17,16 +17,28 @@ from idler import (
 if __name__ == '__main__':
 
     try:
+        # check in attachments dir is empty, if not : will empty the dir
         print("STARTUP : getting files in ./attachments if any...")
         files = [x for x in Path("./attachments/").iterdir()]
         # pprint(files)
         if files:
             print(f"STARTUP : {len(files)} file(s) found in ./attachments")
+            removed = []
             for f in files:
-                remove(f)
-            print(f"STARTUP : {len(files)} file(s) removed !")
+                try:
+                    remove(f)
+                    removed.append(f)
+                except Exception:
+                    pass
+            if len(removed) == len(files):
+                print(f"STARTUP : {len(files)} file(s) removed !")
+            else:
+                print(f"STARTUP : {len(removed)} file(s) removed !")
+                print(f"STARTUP : {len(files)-len(removed)} file(s) remaining...")
+                print(f for f in removed)
         else:
             print("STARTUP : No files have been found")
+        
         
         print("STARTUP : Trying to start application...")
         
