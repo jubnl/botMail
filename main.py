@@ -21,10 +21,10 @@ if __name__ == '__main__':
         files = [x for x in Path("./attachments/").iterdir()]
         # pprint(files)
         if files:
-            print(f"STARTUP : {len(files)} files found in ./attachments")
+            print(f"STARTUP : {len(files)} file(s) found in ./attachments")
             for f in files:
                 remove(f)
-            print(f"STARTUP : {len(files)} removed !")
+            print(f"STARTUP : {len(files)} file(s) removed !")
         else:
             print("STARTUP : No files have been found")
         
