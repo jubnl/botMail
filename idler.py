@@ -12,6 +12,7 @@ env.read_env()
 IMAP_SERVER = env("IMAP_SERVER")
 EMAIL = env("EMAIL")
 PASSWORD = env("PASSWORD")
+TIMEZONE = env("TIMEZONE")
 
 
 # This is the threading object that does all the waiting on 

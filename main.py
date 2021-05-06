@@ -1,6 +1,7 @@
 from imaplib2 import IMAP4_SSL
 from time import sleep
 from datetime import datetime
+from pytz import timezone
 from pathlib import Path
 from os import remove
 from sys import exit
@@ -9,6 +10,7 @@ from idler import (
     IMAP_SERVER,
     PASSWORD,
     EMAIL,
+    TIMEZONE,
     Idler
 )
 
@@ -40,7 +42,7 @@ if __name__ == '__main__':
 
         # every 28 min and 59 seconds, reboot to prevent the bot to get out of his idle state
         while True:
-            print(f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] : App online !")
+            print(f"[{datetime.now(timezone(TIMEZONE)).strftime('%d/%m/%Y %H:%M:%S')}] : App online !")
             sleep(1739) # IMAP4_SSL.Idle_timout - 1s
             raise Exception
 
@@ -56,6 +58,6 @@ if __name__ == '__main__':
         M.logout()
         print("Disconnected !")
         # log when the bot disconnect (I use an external logger that catch print())
-        print(f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] : App offline")
+        print(f"[{datetime.now(timezone(TIMEZONE)).strftime('%d/%m/%Y %H:%M:%S')}] : App offline")
         # handled by pm2, automatically restart main.py when it exits
         exit()
