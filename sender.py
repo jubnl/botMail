@@ -27,14 +27,16 @@ def sender(expeditor: str,
     :param webhook_uri: str that contain a Discord webhook URL
     :return None:
     """
-    
+    print("Datas received, trying to send datas to Discord...")
     # instantiate DiscordWebHook
     webhook = DiscordWebhook(url=webhook_uri)
     
     # set attachments if any
     if attachments:
+        print("Getting zip file...")
         with open("attachments/attachments.zip", "rb") as f:
             webhook.add_file(file=f.read(), filename="attachments.zip")
+        print("Zip file added to webhook !")
 
     # get length of every field
     lexpeditor = len(expeditor)
@@ -58,7 +60,7 @@ def sender(expeditor: str,
 
     # check if we need one or more embeds
     if lcontent > MAX_LENGTH_DESCRIPTION:
-
+        print("Multiple embeds needed...")
         # separate content in strings of 2048 chars max
         # contents = List[str]
         contents = []
@@ -68,6 +70,7 @@ def sender(expeditor: str,
             content = content[len(x[0]):]
 
         # send embeds
+        print("Constructing embeds...")
         for n, i in enumerate(contents):
             # pprint((subject, content, expeditor, email))
             embed = DiscordEmbed(title=f"{subject} {n+1}/{len(contents)}", description=i, color='03b2f8')
@@ -75,12 +78,15 @@ def sender(expeditor: str,
             embed.set_timestamp()
             webhook.add_embed(embed)
             response = webhook.execute()
+        print("Embeds have been sent !")
 
     # send embed
     else:
+        print("Constructing embed...")
         # pprint((subject, content, expeditor, email))
         embed = DiscordEmbed(title=subject, description=content, color='03b2f8')
         embed.set_author(name=expeditor, url=email)
         embed.set_timestamp()
         webhook.add_embed(embed)
         response = webhook.execute()
+        print("Embed have been sent !")

@@ -65,8 +65,8 @@ class Idler(object):
 
     # The method that gets called when a new email arrives. 
     def dosync(self):
-        print("Email incoming")
+        print("Email incoming...")
         with MailBox(IMAP_SERVER).login(EMAIL, PASSWORD, "INBOX") as mailbox:
             email = mailbox.fetch(limit=1, reverse=True)
+            print("Email retrieved !")
             extractor(next(email))
-        
