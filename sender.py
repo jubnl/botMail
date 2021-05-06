@@ -89,4 +89,4 @@ def sender(expeditor: str,
         embed.set_timestamp()
         webhook.add_embed(embed)
         response = webhook.execute()
-        print("Embed have been sent !")
+        print("Embed has been sent !")
